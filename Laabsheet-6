@@ -501,3 +501,195 @@ int main() {
     if(!found) printf("Element not found.\n");
     return 0;
 }
+
+16. Count the Number of Occurrences of an Element (Linear Search)
+
+c
+#include <stdio.h>
+
+int main() {
+    int n, key, count = 0;
+    printf("Enter the number of elements: ");
+    scanf("%d", &n);
+
+    int arr[n];
+    printf("Enter %d elements:\n", n);
+    for(int i = 0; i < n; i++) {
+        scanf("%d", &arr[i]);
+    }
+
+    printf("Enter the element to count: ");
+    scanf("%d", &key);
+
+    // Linear search logic checking every item
+    for(int i = 0; i < n; i++) {
+        if(arr[i] == key) {
+            count++;
+        }
+    }
+
+    printf("The element %d occurs %d time(s) in the array.\n", key, count);
+    return 0;
+}
+Use code with caution.
+
+17. Check if a Given Number is Present in the Array (Linear Search)
+
+c
+#include <stdio.h>
+
+int main() {
+    int n, key, found = 0;
+    printf("Enter the number of elements: ");
+    scanf("%d", &n);
+
+    int arr[n];
+    printf("Enter %d elements:\n", n);
+    for(int i = 0; i < n; i++) {
+        scanf("%d", &arr[i]);
+    }
+
+    printf("Enter the number to check: ");
+    scanf("%d", &key);
+
+    for(int i = 0; i < n; i++) {
+        if(arr[i] == key) {
+            found = 1;
+            break; // Stop looking once found
+        }
+    }
+
+    if(found) {
+        printf("Yes, the number %d is present in the array.\n", key);
+    } else {
+        printf("No, the number %d is not present in the array.\n", key);
+    }
+    return 0;
+}
+Use code with caution.
+
+18. Implement Binary Search for an Array of Integers
+
+(Note: Binary Search assumes the array input is already sorted)
+c
+#include <stdio.h>
+
+int main() {
+    int n, key;
+    printf("Enter the number of elements: ");
+    scanf("%d", &n);
+
+    int arr[n];
+    printf("Enter %d integers IN SORTED ORDER:\n", n);
+    for(int i = 0; i < n; i++) {
+        scanf("%d", &arr[i]);
+    }
+
+    printf("Enter the target integer to search: ");
+    scanf("%d", &key);
+
+    int low = 0, high = n - 1, mid, found = 0;
+
+    while(low <= high) {
+        mid = low + (high - low) / 2;
+
+        if(arr[mid] == key) {
+            printf("Integer %d found at index %d.\n", key, mid);
+            found = 1;
+            break;
+        } else if(arr[mid] < key) {
+            low = mid + 1;
+        } else {
+            high = mid - 1;
+        }
+    }
+
+    if(!found) {
+        printf("Integer %d not found in the array.\n", key);
+    }
+    return 0;
+}
+
+19. Implement Binary Search for an Array of Floating-Point Numbers
+
+
+c
+#include <stdio.h>
+
+int main() {
+    int n;
+    float key;
+    printf("Enter the number of elements: ");
+    scanf("%d", &n);
+
+    float arr[n];
+    printf("Enter %d floats IN SORTED ORDER:\n", n);
+    for(int i = 0; i < n; i++) {
+        scanf("%f", &arr[i]);
+    }
+
+    printf("Enter the target float to search: ");
+    scanf("%f", &key);
+
+    int low = 0, high = n - 1, mid, found = 0;
+
+    while(low <= high) {
+        mid = low + (high - low) / 2;
+
+        if(arr[mid] == key) {
+            printf("Float %.2f found at index %d.\n", key, mid);
+            found = 1;
+            break;
+        } else if(arr[mid] < key) {
+            low = mid + 1;
+        } else {
+            high = mid - 1;
+        }
+    }
+
+    if(!found) {
+        printf("Float %.2f not found in the array.\n", key);
+    }
+    return 0;
+}
+Use code with caution.
+
+20. Search the Largest Element in a Sorted Array Using Binary Search
+
+Conceptual clarification: If an array is already sorted in ascending order, the largest element is mathematically located at the last index (n - 1), yielding an execution speed of O(1).
+However, if your assignment requires using a full Binary Search paradigm to actively reduce search boundaries until finding the final maximum bound, the implementation matches this flow:
+c
+#include <stdio.h>
+
+int main() {
+    int n;
+    printf("Enter the number of elements: ");
+    scanf("%d", &n);
+
+    int arr[n];
+    printf("Enter %d elements IN ASCENDING SORTED ORDER:\n", n);
+    for(int i = 0; i < n; i++) {
+        scanf("%d", &arr[i]);
+    }
+
+    // Binary search pattern targeting the rightmost maximum bound
+    int low = 0, high = n - 1, mid;
+    int maxElementIndex = -1;
+
+    while(low <= high) {
+        mid = low + (high - low) / 2;
+
+        // If mid is the last element, or if the next element is out of bounds
+        if(mid == n - 1) {
+            maxElementIndex = mid;
+            break;
+        } else {
+            // Keep narrowing search space to the right (higher value indices)
+            low = mid + 1;
+        }
+    }
+
+    printf("The largest element in the sorted array is: %d (found at index %d)\n", 
+            arr[maxElementIndex], maxElementIndex);
+    return 0;
+}
