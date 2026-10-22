@@ -1,0 +1,503 @@
+
+1. Input and Display Elements of a 1D Array
+
+c
+#include <stdio.h>
+
+int main() {
+    int n;
+    printf("Enter the number of elements: ");
+    scanf("%d", &n);
+
+    int arr[n];
+    printf("Enter %d elements:\n", n);
+    for(int i = 0; i < n; i++) {
+        scanf("%d", &arr[i]);
+    }
+
+    printf("The elements in the array are: ");
+    for(int i = 0; i < n; i++) {
+        printf("%d ", arr[i]);
+    }
+    printf("\n");
+    return 0;
+}
+Use code with caution.
+
+2. Find the Sum of All Elements in a 1D Array
+
+c
+#include <stdio.h>
+
+int main() {
+    int n, sum = 0;
+    printf("Enter the number of elements: ");
+    scanf("%d", &n);
+
+    int arr[n];
+    printf("Enter %d elements:\n", n);
+    for(int i = 0; i < n; i++) {
+        scanf("%d", &arr[i]);
+        sum += arr[i];
+    }
+
+    printf("Sum of all elements = %d\n", sum);
+    return 0;
+}
+Use code with caution.
+
+3. Find the Maximum and Minimum Element in a 1D Array
+
+c
+#include <stdio.h>
+
+int main() {
+    int n;
+    printf("Enter the number of elements: ");
+    scanf("%d", &n);
+
+    int arr[n];
+    printf("Enter %d elements:\n", n);
+    for(int i = 0; i < n; i++) {
+        scanf("%d", &arr[i]);
+    }
+
+    int max = arr[0];
+    int min = arr[0];
+
+    for(int i = 1; i < n; i++) {
+        if(arr[i] > max) max = arr[i];
+        if(arr[i] < min) min = arr[i];
+    }
+
+    printf("Maximum element = %d\n", max);
+    printf("Minimum element = %d\n", min);
+    return 0;
+}
+Use code with caution.
+
+4. Reverse a 1D Array
+
+c
+#include <stdio.h>
+
+int main() {
+    int n;
+    printf("Enter the number of elements: ");
+    scanf("%d", &n);
+
+    int arr[n];
+    printf("Enter %d elements:\n", n);
+    for(int i = 0; i < n; i++) {
+        scanf("%d", &arr[i]);
+    }
+
+    // Reversing the array in-place using two pointers
+    int start = 0, end = n - 1;
+    while(start < end) {
+        int temp = arr[start];
+        arr[start] = arr[end];
+        arr[end] = temp;
+        start++;
+        end--;
+    }
+
+    printf("Reversed array: ");
+    for(int i = 0; i < n; i++) {
+        printf("%d ", arr[i]);
+    }
+    printf("\n");
+    return 0;
+}
+Use code with caution.
+
+5. Input 10 Numbers and Count Even and Odd Numbers
+
+c
+#include <stdio.h>
+
+int main() {
+    int arr[10];
+    int evenCount = 0, oddCount = 0;
+
+    printf("Enter 10 numbers:\n");
+    for(int i = 0; i < 10; i++) {
+        scanf("%d", &arr[i]);
+        if(arr[i] % 2 == 0) {
+            evenCount++;
+        } else {
+            oddCount++;
+        }
+    }
+
+    printf("Total Even numbers = %d\n", evenCount);
+    printf("Total Odd numbers = %d\n", oddCount);
+    return 0;
+}
+Use code with caution.
+
+6. Search an Element in a 1D Array (Without Using Functions)
+
+c
+#include <stdio.h>
+
+int main() {
+    int n, key, found = 0;
+    printf("Enter the number of elements: ");
+    scanf("%d", &n);
+
+    int arr[n];
+    printf("Enter %d elements:\n", n);
+    for(int i = 0; i < n; i++) {
+        scanf("%d", &arr[i]);
+    }
+
+    printf("Enter the element to search: ");
+    scanf("%d", &key);
+
+    for(int i = 0; i < n; i++) {
+        if(arr[i] == key) {
+            printf("Element found at index %d\n", i);
+            found = 1;
+            break; 
+        }
+    }
+
+    if(!found) {
+        printf("Element not found in the array.\n");
+    }
+    return 0;
+}
+Use code with caution.
+
+7. Input and Display Elements of a 2D Array (Matrix)
+
+c
+#include <stdio.h>
+
+int main() {
+    int rows, cols;
+    printf("Enter rows and columns: ");
+    scanf("%d %d", &rows, &cols);
+
+    int matrix[rows][cols];
+    printf("Enter matrix elements:\n");
+    for(int i = 0; i < rows; i++) {
+        for(int j = 0; j < cols; j++) {
+            scanf("%d", &matrix[i][j]);
+        }
+    }
+
+    printf("\nThe Matrix is:\n");
+    for(int i = 0; i < rows; i++) {
+        for(int j = 0; j < cols; j++) {
+            printf("%d\t", matrix[i][j]);
+        }
+        printf("\n");
+    }
+    return 0;
+}
+Use code with caution.
+
+8. Add Two Matrices
+
+c
+#include <stdio.h>
+
+int main() {
+    int rows, cols;
+    printf("Enter rows and columns for the matrices: ");
+    scanf("%d %d", &rows, &cols);
+
+    int A[rows][cols], B[rows][cols], sum[rows][cols];
+
+    printf("Enter elements of Matrix A:\n");
+    for(int i = 0; i < rows; i++)
+        for(int j = 0; j < cols; j++)
+            scanf("%d", &A[i][j]);
+
+    printf("Enter elements of Matrix B:\n");
+    for(int i = 0; i < rows; i++)
+        for(int j = 0; j < cols; j++)
+            scanf("%d", &B[i][j]);
+
+    // Adding matrices
+    for(int i = 0; i < rows; i++) {
+        for(int j = 0; j < cols; j++) {
+            sum[i][j] = A[i][j] + B[i][j];
+        }
+    }
+
+    printf("\nResultant Matrix (A + B):\n");
+    for(int i = 0; i < rows; i++) {
+        for(int j = 0; j < cols; j++) {
+            printf("%d\t", sum[i][j]);
+        }
+        printf("\n");
+    }
+    return 0;
+}
+Use code with caution.
+
+9. Subtract Two Matrices
+
+c
+#include <stdio.h>
+
+int main() {
+    int rows, cols;
+    printf("Enter rows and columns for the matrices: ");
+    scanf("%d %d", &rows, &cols);
+
+    int A[rows][cols], B[rows][cols], diff[rows][cols];
+
+    printf("Enter elements of Matrix A:\n");
+    for(int i = 0; i < rows; i++)
+        for(int j = 0; j < cols; j++)
+            scanf("%d", &A[i][j]);
+
+    printf("Enter elements of Matrix B:\n");
+    for(int i = 0; i < rows; i++)
+        for(int j = 0; j < cols; j++)
+            scanf("%d", &B[i][j]);
+
+    // Subtracting matrices
+    for(int i = 0; i < rows; i++) {
+        for(int j = 0; j < cols; j++) {
+            diff[i][j] = A[i][j] - B[i][j];
+        }
+    }
+
+    printf("\nResultant Matrix (A - B):\n");
+    for(int i = 0; i < rows; i++) {
+        for(int j = 0; j < cols; j++) {
+            printf("%d\t", diff[i][j]);
+        }
+        printf("\n");
+    }
+    return 0;
+}
+Use code with caution.
+
+10. Multiply Two Matrices
+
+c
+#include <stdio.h>
+
+int main() {
+    int r1, c1, r2, c2;
+    printf("Enter rows and columns for Matrix A: ");
+    scanf("%d %d", &r1, &c1);
+    printf("Enter rows and columns for Matrix B: ");
+    scanf("%d %d", &r2, &c2);
+
+    if(c1 != r2) {
+        printf("Error: Matrix multiplication not possible. Columns of A must equal rows of B.\n");
+        return 0;
+    }
+
+    int A[r1][c1], B[r2][c2], product[r1][c2];
+
+    printf("Enter elements of Matrix A:\n");
+    for(int i = 0; i < r1; i++)
+        for(int j = 0; j < c1; j++)
+            scanf("%d", &A[i][j]);
+
+    printf("Enter elements of Matrix B:\n");
+    for(int i = 0; i < r2; i++)
+        for(int j = 0; j < c2; j++)
+            scanf("%d", &B[i][j]);
+
+    // Initializing the product matrix with 0 and multiplying
+    for(int i = 0; i < r1; i++) {
+        for(int j = 0; j < c2; j++) {
+            product[i][j] = 0;
+            for(int k = 0; k < c1; k++) {
+                product[i][j] += A[i][k] * B[k][j];
+            }
+        }
+    }
+
+    printf("\nProduct Matrix (A * B):\n");
+    for(int i = 0; i < r1; i++) {
+        for(int j = 0; j < c2; j++) {
+            printf("%d\t", product[i][j]);
+        }
+        printf("\n");
+    }
+    return 0;
+}
+Use code with caution.
+
+11. Sort an Array Using Bubble Sort in Ascending Order
+
+c
+#include <stdio.h>
+
+int main() {
+    int n;
+    printf("Enter number of elements: ");
+    scanf("%d", &n);
+
+    int arr[n];
+    printf("Enter elements:\n");
+    for(int i = 0; i < n; i++) scanf("%d", &arr[i]);
+
+    // Bubble Sort Logic (Ascending)
+    for(int i = 0; i < n - 1; i++) {
+        for(int j = 0; j < n - i - 1; j++) {
+            if(arr[j] > arr[j+1]) {
+                int temp = arr[j];
+                arr[j] = arr[j+1];
+                arr[j+1] = temp;
+            }
+        }
+    }
+
+    printf("Sorted array in ascending order: ");
+    for(int i = 0; i < n; i++) printf("%d ", arr[i]);
+    printf("\n");
+    return 0;
+}
+Use code with caution.
+
+12. Sort an Array Using Bubble Sort in Descending Order
+
+c
+#include <stdio.h>
+
+int main() {
+    int n;
+    printf("Enter number of elements: ");
+    scanf("%d", &n);
+
+    int arr[n];
+    printf("Enter elements:\n");
+    for(int i = 0; i < n; i++) scanf("%d", &arr[i]);
+
+    // Bubble Sort Logic (Descending)
+    for(int i = 0; i < n - 1; i++) {
+        for(int j = 0; j < n - i - 1; j++) {
+            if(arr[j] < arr[j+1]) { // Sign swapped here
+                int temp = arr[j];
+                arr[j] = arr[j+1];
+                arr[j+1] = temp;
+            }
+        }
+    }
+
+    printf("Sorted array in descending order: ");
+    for(int i = 0; i < n; i++) printf("%d ", arr[i]);
+    printf("\n");
+    return 0;
+}
+Use code with caution.
+
+13. Sort Names of Students Using Bubble Sort
+
+c
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+    int n;
+    printf("Enter the number of students: ");
+    scanf("%d", &n);
+    getchar(); // Clear trailing newline from buffer
+
+    char names[n][50]; // 2D array to hold string elements
+    char temp[50];
+
+    printf("Enter names of %d students:\n", n);
+    for(int i = 0; i < n; i++) {
+        fgets(names[i], sizeof(names[i]), stdin);
+        names[i][strcspn(names[i], "\n")] = 0; // Strip newline char
+    }
+
+    // Bubble sort to organize strings alphabetically
+    for(int i = 0; i < n - 1; i++) {
+        for(int j = 0; j < n - i - 1; j++) {
+            if(strcmp(names[j], names[j+1]) > 0) {
+                strcpy(temp, names[j]);
+                strcpy(names[j], names[j+1]);
+                strcpy(names[j+1], temp);
+            }
+        }
+    }
+
+    printf("\nAlphabetically Sorted Student Names:\n");
+    for(int i = 0; i < n; i++) {
+        printf("%s\n", names[i]);
+    }
+    return 0;
+}
+Use code with caution.
+
+14. Search an Element Using Linear Search
+
+c
+#include <stdio.h>
+
+int main() {
+    int n, key, found = 0;
+    printf("Enter the number of elements: ");
+    scanf("%d", &n);
+
+    int arr[n];
+    printf("Enter %d elements:\n", n);
+    for(int i = 0; i < n; i++) scanf("%d", &arr[i]);
+
+    printf("Enter element to find: ");
+    scanf("%d", &key);
+
+    for(int i = 0; i < n; i++) {
+        if(arr[i] == key) {
+            printf("Element found at index %d via Linear Search.\n", i);
+            found = 1;
+            break;
+        }
+    }
+
+    if(!found) printf("Element not found.\n");
+    return 0;
+}
+
+
+15. Search an Element Using Binary Search
+
+c
+#include <stdio.h>
+
+int main() {
+    int n, key;
+    printf("Enter the number of elements: ");
+    scanf("%d", &n);
+
+    int arr[n];
+    printf("Enter %d elements IN SORTED ORDER:\n", n);
+    for(int i = 0; i < n; i++) scanf("%d", &arr[i]);
+
+    printf("Enter target element to find: ");
+    scanf("%d", &key);
+
+    int low = 0, high = n - 1, mid, found = 0;
+
+    while(low <= high) {
+        mid = low + (high - low) / 2;
+
+        if(arr[mid] == key) {
+            printf("Element found at index %d via Binary Search.\n", mid);
+            found = 1;
+            break;
+        }
+        else if(arr[mid] < key) {
+            low = mid + 1; // Look in the right half
+        }
+        else {
+            high = mid - 1; // Look in the left half
+        }
+    }
+
+    if(!found) printf("Element not found.\n");
+    return 0;
+}
